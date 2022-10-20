@@ -1,0 +1,27 @@
+project:
+  type: book
+
+book:
+  title: "Introdução à Probabilidade e Estatística"
+  subtitle: "Exemplos e aplicações com R"
+  author: "Luciana G.de Godoi, Nátaly A. Jiménez Monroy, Alessandro J. Q. Sarnaglia, Bartolomeu Zamprogno, Fabio Fajardo Molinares & Mauro Campos"
+  date: today
+  chapters:
+    - index.qmd
+    - intro.qmd
+    - descriptive.qmd
+    - summary.qmd
+    - references.qmd
+
+language: _language-pt-BR.yml
+
+bibliography: references.bib
+
+format:
+  html:
+    theme: cosmo
+  pdf:
+    documentclass: scrreprt
+
+editor: visual
+

@@ -97,6 +97,10 @@ div.csl-indent {
 <script src="site_libs/dt-ext-buttons-1.11.3/js/buttons.print.min.js"></script>
 <link href="site_libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet">
 <script src="site_libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<script src="site_libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet">
+<script src="site_libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -173,6 +177,7 @@ div.csl-indent {
   <li><a href="#classificação-das-variáveis" id="toc-classificação-das-variáveis" class="nav-link" data-scroll-target="#classificação-das-variáveis"><span class="toc-section-number">2.4.1</span>  Classificação das variáveis</a></li>
   <li><a href="#representação-tabular" id="toc-representação-tabular" class="nav-link" data-scroll-target="#representação-tabular"><span class="toc-section-number">2.4.2</span>  Representação Tabular</a></li>
   <li><a href="#representação-gráfica" id="toc-representação-gráfica" class="nav-link" data-scroll-target="#representação-gráfica"><span class="toc-section-number">2.4.3</span>  Representação gráfica</a></li>
+  <li><a href="#medidas-numéricas" id="toc-medidas-numéricas" class="nav-link" data-scroll-target="#medidas-numéricas"><span class="toc-section-number">2.4.4</span>  Medidas Numéricas</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -428,8 +433,8 @@ Observações
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-6cde21e9ad1c1806c6e6" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-6cde21e9ad1c1806c6e6">{"x":{"filter":"none","vertical":false,"extensions":["Buttons"],"data":[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],["f","s","f","m","s","m","f","s","m","m","f","s","f","s","f","s","m","f","m","m","f","s","f","f","f","s","s","s","f","m"],[3,2,2,1,1,1,2,3,1,2,2,0,2,1,3,0,1,1,1,2,2,2,1,2,2,1,2,1,3,3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>i<\/th>\n      <th>E<\/th>\n      <th>N<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","columnDefs":[{"className":"dt-center","targets":[0,1,2]}],"buttons":[{"extend":"csv","filename":"ex2_2"},{"extend":"excel","filename":"ex2_2"},{"extend":"pdf","filename":"ex2_2"}],"pageLength":10,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-ae22e47ddd14b4819fda" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-ae22e47ddd14b4819fda">{"x":{"filter":"none","vertical":false,"extensions":["Buttons"],"data":[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],["f","s","f","m","s","m","f","s","m","m","f","s","f","s","f","s","m","f","m","m","f","s","f","f","f","s","s","s","f","m"],[3,2,2,1,1,1,2,3,1,2,2,0,2,1,3,0,1,1,1,2,2,2,1,2,2,1,2,1,3,3]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>i<\/th>\n      <th>E<\/th>\n      <th>N<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","columnDefs":[{"className":"dt-center","targets":[0,1,2]}],"buttons":[{"extend":"csv","filename":"ex2_2"},{"extend":"excel","filename":"ex2_2"},{"extend":"pdf","filename":"ex2_2"}],"pageLength":10,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><br></p>
@@ -726,7 +731,7 @@ Observações
 <li><p>A frequência <span class="math inline">\(n_i\)</span> é o número de observações do intervalo <span class="math inline">\(I_i\)</span>.</p></li>
 </ol>
 <center>
-<div id="fig-populacao" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-intervalos" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/intervalos.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figura&nbsp;2.4: Agrupamento de valores próximos em intervalos.</figcaption><p></p>
@@ -737,12 +742,12 @@ Observações
 <p><span class="theorem-title"><strong>Definição 2.15 (Frequências relativas) </strong></span>A distribuição de frequências dos dados <span class="math inline">\(x_1,\ldots,x_n\)</span> é definida por</p>
 <table class="table">
 <colgroup>
-<col style="width: 10%">
-<col style="width: 13%">
-<col style="width: 22%">
-<col style="width: 17%">
-<col style="width: 22%">
-<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -769,12 +774,12 @@ Observações
 <p>A distribuição de frequências relativas é dada por:</p>
 <table class="table">
 <colgroup>
-<col style="width: 10%">
-<col style="width: 13%">
-<col style="width: 22%">
-<col style="width: 17%">
-<col style="width: 22%">
-<col style="width: 14%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -851,8 +856,8 @@ Alternativa A - observações
 <div class="cell">
 <div class="cell-output-display">
 
-<div id="htmlwidget-9f7076f19da488eadb13" style="width:100%;height:auto;" class="datatables html-widget"></div>
-<script type="application/json" data-for="htmlwidget-9f7076f19da488eadb13">{"x":{"filter":"none","vertical":false,"extensions":["Buttons"],"data":[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40],[2,3.4,1.9,3.3,4.7,4.1,1.7,4.3,3.1,3.8,3.5,3.1,3.4,3.7,3.2,4.5,3.3,3.6,4.4,2.6,3.2,3.8,2.9,3.2,3.9,3.7,3.1,3.3,4.1,3,3,4.7,3.9,1.9,4.2,2.6,3.7,3.1,3.4,3.5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>i<\/th>\n      <th>X<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","columnDefs":[{"className":"dt-center","targets":[0,1]}],"buttons":[{"extend":"csv","filename":"ex2_4"},{"extend":"excel","filename":"ex2_4"},{"extend":"pdf","filename":"ex2_4"}],"pageLength":10,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
+<div id="htmlwidget-cfefabb7a781eeb103b0" style="width:100%;height:auto;" class="datatables html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cfefabb7a781eeb103b0">{"x":{"filter":"none","vertical":false,"extensions":["Buttons"],"data":[[1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40],[2,3.4,1.9,3.3,4.7,4.1,1.7,4.3,3.1,3.8,3.5,3.1,3.4,3.7,3.2,4.5,3.3,3.6,4.4,2.6,3.2,3.8,2.9,3.2,3.9,3.7,3.1,3.3,4.1,3,3,4.7,3.9,1.9,4.2,2.6,3.7,3.1,3.4,3.5]],"container":"<table class=\"display\">\n  <thead>\n    <tr>\n      <th>i<\/th>\n      <th>X<\/th>\n    <\/tr>\n  <\/thead>\n<\/table>","options":{"dom":"tBp","columnDefs":[{"className":"dt-center","targets":[0,1]}],"buttons":[{"extend":"csv","filename":"ex2_4"},{"extend":"excel","filename":"ex2_4"},{"extend":"pdf","filename":"ex2_4"}],"pageLength":10,"order":[],"autoWidth":false,"orderClasses":false}},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 <p><br></p>
@@ -1052,16 +1057,614 @@ Observe que…
 <h3 data-number="2.4.3" class="anchored" data-anchor-id="representação-gráfica"><span class="header-section-number">2.4.3</span> Representação gráfica</h3>
 <p>A representação gráfica dos dados permite uma melhor visualização e uma análise detalhada dos dados analisados. Existem diversos tipos de gráficos que podem ser usados de acordo com o tipo de variável de interesse. Os gráficos mais usados são de setores, barras e histograma. Esquematicamente:</p>
 <center>
-<div id="fig-populacao" class="quarto-figure quarto-figure-center anchored">
+<div id="fig-graficos" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="images/graficos.png" class="img-fluid figure-img"></p>
 <p></p><figcaption class="figure-caption">Figura&nbsp;2.5: Agrupamento de valores próximos em intervalos.</figcaption><p></p>
 </figure>
 </div>
 </center>
+<div id="def-graph_setores" class="theorem definition">
+<p><span class="theorem-title"><strong>Definição 2.17 (Gráfico de setores) </strong></span>Para construir um gráfico de setores siga os seguintes passos:</p>
+<ol type="1">
+<li>Suponha que os valores diferentes da variável são <span class="math inline">\(x_1^*,\ldots,x_k^*\)</span>;</li>
+<li>Sejam <span class="math inline">\(f_1,\ldots,f_k\)</span> as frequências relativas desses valores;</li>
+<li>Desenhe um círculo de raio arbitrário;</li>
+<li>Represente no círculo desenhado o valor <span class="math inline">\(x_i^*\)</span> através de um arco de circunferência de ângulo proporcional a sua frequência relativa. Isto é, um arco de comprimento <span class="math inline">\(2\pi r f_i\)</span>, onde <span class="math inline">\(r\)</span> é o raio arbitrário.</li>
+</ol>
+<center>
+<div id="fig-setores" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/setores.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2.6: Construção do gráfico de setores.</figcaption><p></p>
+</figure>
+</div>
+</center>
+</div>
+<div id="exm-exemplo5" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 2.5 </strong></span>Relembrando os dados do <a href="#exm-exemplo1">Exemplo&nbsp;<span>2.1</span></a>, a distribuição de frequências relativas da variável <span class="math inline">\(X=\)</span> “Tipo de música preferida” é dada por</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(X\)</span></th>
+<th style="text-align: center;">Frequência</th>
+<th style="text-align: center;">Frequência relativa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>p</strong></td>
+<td style="text-align: center;"><span class="math inline">\(17\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.4250\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>r</strong></td>
+<td style="text-align: center;"><span class="math inline">\(6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.1500\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>s</strong></td>
+<td style="text-align: center;"><span class="math inline">\(17\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.4250\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>Total</strong></td>
+<td style="text-align: center;"><span class="math inline">\(40\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.0000\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Assim, o gráfico de setores de <span class="math inline">\(X\)</span> para a amostra observada no <a href="#exm-exemplo1">Exemplo&nbsp;<span>2.1</span></a> é dado por</p>
+<center>
+<div class="cell">
+<div id="fig-tipo_musica" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div id="htmlwidget-06ade5506f694bdb3c68" style="width:100%;height:464px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-06ade5506f694bdb3c68">{"x":{"visdat":{"167c7550e696e":["function () ","plotlyVisDat"]},"cur_data":"167c7550e696e","attrs":{"167c7550e696e":{"labels":["Pagode","Rock","Sertanejo"],"values":[17,6,17],"textinfo":"label+percent","insidetextorientation":"radial","marker":{"colors":["#EA6B66","#1984c5","#97D077"],"line":{"color":"#FFFFFF","width":1}},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"pie"}},"layout":{"margin":{"b":50,"l":50,"t":50,"r":50,"pad":4},"autosize":false,"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"labels":["Pagode","Rock","Sertanejo"],"values":[17,6,17],"textinfo":"label+percent","insidetextorientation":"radial","marker":{"color":"rgba(31,119,180,1)","colors":["#EA6B66","#1984c5","#97D077"],"line":{"color":"#FFFFFF","width":1}},"type":"pie","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2.7: Gráfico de setores para a variável preferência de música</figcaption><p></p>
+</figure>
+</div>
+</div>
+</center>
+</div>
+<!--# Fim exm-exemplo5-->
+<div id="def-graph_barras" class="theorem definition">
+<p><span class="theorem-title"><strong>Definição 2.18 (Gráfico de barras) </strong></span>Um gráfico de barras é construido da seguinte maneira:</p>
+<ol type="1">
+<li>Suponha que os valores diferentes da variável são <span class="math inline">\(x_1^*&lt;\cdots&lt;x_k^*\)</span>;</li>
+<li>Sejam <span class="math inline">\(f_1,\ldots,f_k\)</span> as frequências relativas desses valores;</li>
+<li>Desenhe o eixo cartesiano;</li>
+<li>No eixo das abscissas, emcima dos valores <span class="math inline">\(x_1^*,\ldots,x_k^*\)</span>, posicione retângulos (barras);</li>
+<li>As bases de todos retângulos devem ter o mesmo comprimento escolhido arbitrariamente;</li>
+<li>A altura de um retângulo é dada pela frequência relativa do valor de <span class="math inline">\(X\)</span> que é representado por ele. Isto é, a altura da barra que representa o valor <span class="math inline">\(x_i^*\)</span> é dada por <span class="math inline">\(f_i\)</span>.</li>
+</ol>
+<center>
+<div id="fig-barras" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/barras.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2.8: Construção do gráfico de barras.</figcaption><p></p>
+</figure>
+</div>
+</center>
+</div>
+<!--# Fim def-graph_barras-->
 <p><br></p>
-<p>https://themockup.blog/posts/2020-09-04-10-table-rules-in-r/</p>
-<p><span style="background-color: yellow">this line has a yellow background</span>.</p>
+<div id="exm-exemplo6" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 2.6 </strong></span>Considerando a distribuição de frequências relativas da variável <strong>E</strong> no <a href="#exm-exemplo3">Exemplo&nbsp;<span>2.3</span></a>, o gráfico de barras é dado por</p>
+<center>
+<div class="cell">
+<div id="fig-ex_3a" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div id="htmlwidget-687a6071d8b799314b87" style="width:100%;height:464px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-687a6071d8b799314b87">{"x":{"data":[{"orientation":"v","width":0.5,"base":0,"x":[2],"y":[0.27],"text":"Escolaridade: Médio<br />Freq: 0.27","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(128,177,211,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.5,"base":0,"x":[1],"y":[0.4],"text":"Escolaridade: Fundamental<br />Freq: 0.40","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(251,128,114,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.5,"base":0,"x":[3],"y":[0.33],"text":"Escolaridade: Superior<br />Freq: 0.33","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(253,180,98,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50,"r":50,"b":50,"l":50,"pad":4},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,3.6],"tickmode":"array","ticktext":["Fundamental","Médio","Superior"],"tickvals":[1,2,3],"categoryorder":"array","categoryarray":["Fundamental","Médio","Superior"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Escolaridade","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.02,0.42],"tickmode":"array","ticktext":["0.0","0.1","0.2","0.3","0.4"],"tickvals":[0,0.1,0.2,0.3,0.4],"categoryorder":"array","categoryarray":["0.0","0.1","0.2","0.3","0.4"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Frequência Relativa","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative","autosize":false},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"167c772742508":{"x":{},"y":{},"type":"bar"}},"cur_data":"167c772742508","visdat":{"167c772742508":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2.9: Gráfico de barras para a variável Escolaridade</figcaption><p></p>
+</figure>
+</div>
+</div>
+</center>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Atenção
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Em um gráfico de barras, um valor com frequência <span class="math inline">\(0\)</span> também deve ser representado.</p>
+</div>
+</div>
+<!--# Fim callout-->
+<p>Por exemplo, suponha que a variável número de filhos (<span class="math inline">\(N\)</span>) do <a href="#exm-exemplo2">Exemplo&nbsp;<span>2.2</span></a> tivesse a seguinte distribuição de frequências relativas:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>N</strong></th>
+<th style="text-align: center;">Frequência relativa</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>0</strong></td>
+<td style="text-align: center;"><span class="math inline">\(0.27\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><span class="math inline">\(0.57\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;"><span class="math inline">\(0.00\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;"><span class="math inline">\(0.16\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Total</strong></td>
+<td style="text-align: center;"><span class="math inline">\(1.00\)</span></td>
+</tr>
+</tbody>
+</table>
+<center>
+<div class="cell">
+<div id="fig-ex_3b" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div id="htmlwidget-6885433064aebfcd0c2b" style="width:100%;height:464px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-6885433064aebfcd0c2b">{"x":{"data":[{"orientation":"v","width":0.5,"base":0,"x":[2],"y":[0.57],"text":"N_Filhos: 1<br />Freq: 0.57","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(128,177,211,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.5,"base":0,"x":[4],"y":[0.16],"text":"N_Filhos: 3<br />Freq: 0.16","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(179,222,105,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.5,"base":0,"x":[1],"y":[0.27],"text":"N_Filhos: 0<br />Freq: 0.27","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(251,128,114,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"orientation":"v","width":0.5,"base":0,"x":[3],"y":[0],"text":"N_Filhos: 2<br />Freq: 0.00","type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(253,180,98,1)","line":{"width":1.88976377952756,"color":"transparent"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50,"r":50,"b":50,"l":50,"pad":4},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[0.4,4.6],"tickmode":"array","ticktext":["0","1","2","3"],"tickvals":[1,2,3,4],"categoryorder":"array","categoryarray":["0","1","2","3"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Número de Filhos","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.0285,0.5985],"tickmode":"array","ticktext":["0.0","0.2","0.4"],"tickvals":[0,0.2,0.4],"categoryorder":"array","categoryarray":["0.0","0.2","0.4"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Frequência Relativa","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative","autosize":false},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"167c75a67d656":{"x":{},"y":{},"type":"bar"}},"cur_data":"167c75a67d656","visdat":{"167c75a67d656":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2.10: Gráfico de barras para a variável Número de Filhos</figcaption><p></p>
+</figure>
+</div>
+</div>
+</center>
+</div>
+<!--# Fim exm-exemplo6-->
+<div id="def-histograma" class="theorem definition">
+<p><span class="theorem-title"><strong>Definição 2.19 (Histograma) </strong></span>O histograma é construido da seguinte maneira:</p>
+<ol type="1">
+<li>Suponha que a variável <span class="math inline">\(X\)</span> forneceu a seguinte distribuição de densidades:</li>
+</ol>
+<center>
+<table class="table">
+<colgroup>
+<col style="width: 14%">
+<col style="width: 21%">
+<col style="width: 21%">
+<col style="width: 17%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(X\)</span></th>
+<th style="text-align: center;"><span class="math inline">\([a_0,a_1]\)</span></th>
+<th style="text-align: center;"><span class="math inline">\((a_1,a_2]\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\ldots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\((a_{k-1},a_k]\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Frequência</td>
+<td style="text-align: center;"><span class="math inline">\(d_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(d_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(d_k\)</span></td>
+</tr>
+</tbody>
+</table>
+</center>
+<ol start="2" type="1">
+<li><p>Desenhe o eixo cartesiano;</p></li>
+<li><p>No eixo das abscissas, encima do intervalo <span class="math inline">\(I_i=(a_{i-1},a_i]\)</span> posicione um retângulos;</p></li>
+<li><p>A base desse retângulo deve corresponder ao intervalo <span class="math inline">\(I_i\)</span>. Portanto, <strong>não deve haver espaço entre as barras</strong>;</p></li>
+<li><p>A altura desse retângulo é dada pela densidade do <span class="math inline">\(i\)</span>-ésimo intervalo, <span class="math inline">\(d_i\)</span>.</p></li>
+</ol>
+<center>
+<div id="fig-barras" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/histograma.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2.11: Construção do histograma.</figcaption><p></p>
+</figure>
+</div>
+</center>
+</div>
+<!--# Fim def-graph_hist-->
+<div id="exm-exemplo7" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 2.7 </strong></span>Considerando a distribuição de frequências relativas do <a href="#exm-exemplo4">Exemplo&nbsp;<span>2.4</span></a>, o histograma é dado por</p>
+<center>
+<div class="cell">
+<div id="fig-ex_4a" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div id="htmlwidget-cd894c7c37ce2df9c69b" style="width:100%;height:464px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-cd894c7c37ce2df9c69b">{"x":{"data":[{"orientation":"v","width":[0.5,0.5,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0,0],"x":[1.75,2.25,2.75,3.25,3.75,4.25,4.75],"y":[0.2,0,0.25,0.75,0.4,0.3,0.1],"text":["density: 0.20","density: 0.00","density: 0.25","density: 0.75","density: 0.40","density: 0.30","density: 0.10"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(128,177,211,0.8)","line":{"width":0.755905511811024,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50,"r":50,"b":50,"l":50,"pad":4},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1.325,5.175],"tickmode":"array","ticktext":["1.5","2.0","2.5","3.0","3.5","4.0","4.5","5.0"],"tickvals":[1.5,2,2.5,3,3.5,4,4.5,5],"categoryorder":"array","categoryarray":["1.5","2.0","2.5","3.0","3.5","4.0","4.5","5.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Vida útil (Anos)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.0375,0.7875],"tickmode":"array","ticktext":["0.0","0.2","0.4","0.6"],"tickvals":[0,0.2,0.4,0.6],"categoryorder":"array","categoryarray":["0.0","0.2","0.4","0.6"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Densidade","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative","autosize":false},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"167c776294a8b":{"x":{},"y":{},"type":"bar"}},"cur_data":"167c776294a8b","visdat":{"167c776294a8b":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2.12: Histograma dados do Exemplo 2.4.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</center>
+<p>Lembrando que não é conveniente deixar intervalos de classe com frequência igual a zero. Dessa forma, as duas primeiras classes podem ser unidas para construir um novo histrograma, a seguir:</p>
+<center>
+<div class="cell">
+<div id="fig-ex_4b" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<div id="htmlwidget-aa204b67f2b25a7a3d97" style="width:100%;height:464px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-aa204b67f2b25a7a3d97">{"x":{"data":[{"orientation":"v","width":[1,0.5,0.5,0.5,0.5,0.5],"base":[0,0,0,0,0,0],"x":[2,2.75,3.25,3.75,4.25,4.75],"y":[0.1,0.25,0.75,0.4,0.3,0.1],"text":["density: 0.10","density: 0.25","density: 0.75","density: 0.40","density: 0.30","density: 0.10"],"type":"bar","textposition":"none","marker":{"autocolorscale":false,"color":"rgba(128,177,211,0.8)","line":{"width":0.755905511811024,"color":"rgba(0,0,0,1)"}},"showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":50,"r":50,"b":50,"l":50,"pad":4},"plot_bgcolor":"rgba(255,255,255,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[1.325,5.175],"tickmode":"array","ticktext":["1.5","2.5","3.0","3.5","4.0","4.5","5.0"],"tickvals":[1.5,2.5,3,3.5,4,4.5,5],"categoryorder":"array","categoryarray":["1.5","2.5","3.0","3.5","4.0","4.5","5.0"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"Vida útil (Anos)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[-0.0375,0.7875],"tickmode":"array","ticktext":["0.0","0.2","0.4","0.6"],"tickvals":[0,0.2,0.4,0.6],"categoryorder":"array","categoryarray":["0.0","0.2","0.4","0.6"],"nticks":null,"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":true,"linecolor":"rgba(0,0,0,1)","linewidth":0.66417600664176,"showgrid":false,"gridcolor":null,"gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"Densidade","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","barmode":"relative","autosize":false},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"167c77439a8f9":{"x":{},"y":{},"type":"bar"}},"cur_data":"167c77439a8f9","visdat":{"167c77439a8f9":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2.13: Histograma sem intevalos de classe com frequência igual a zero.</figcaption><p></p>
+</figure>
+</div>
+</div>
+</center>
+</div>
+<!--# Fim exm-exemplo7-->
+</section>
+<section id="medidas-numéricas" class="level3" data-number="2.4.4">
+<h3 data-number="2.4.4" class="anchored" data-anchor-id="medidas-numéricas"><span class="header-section-number">2.4.4</span> Medidas Numéricas</h3>
+<p>O objetivo principal é expressar alguma característica dos elementos da amostra. As principais características de interesse dos dados são: Centralidade e dispersão.</p>
+<p>A vantagem das medidas numéricas é que os dados podem ser resumidos por meio de um único número que representa características importantes. Entretanto, como desvantagem tem-se perda de informação.</p>
+<section id="medidas-de-tendência-central" class="level4" data-number="2.4.4.1">
+<h4 data-number="2.4.4.1" class="anchored" data-anchor-id="medidas-de-tendência-central"><span class="header-section-number">2.4.4.1</span> Medidas de tendência central</h4>
+<p>Representam o valor típico dos dados observados. Esse valor pode ser o ponto de equilíbrio, o ponto central ou o ponto de maior frequência dos dados. As principais medidas de tendência central são: Média, mediana e moda.</p>
+<div id="def-media" class="theorem definition">
+<p><span class="theorem-title"><strong>Definição 2.20 (Média) </strong></span>Dadas as observações <span class="math inline">\(x_1, x_2,\ldots,x_n\)</span>, a média, ou média aritmética, é definida por <span class="math display">\[\bar{x}=\frac{1}{n}\sum_{i=1}^nx_i=\frac{x_1+x_2+\cdots+x_n}{n}.\]</span></p>
+<ul>
+<li><p>No caso em que os valors são apresentados na forma da seguinte distribuição de frequências:</p>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 15%">
+<col style="width: 15%">
+<col style="width: 16%">
+<col style="width: 15%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(X\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_1^*\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_2^*\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\ldots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_k^*\)</span></th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Frequência</td>
+<td style="text-align: center;"><span class="math inline">\(n_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\sum_{i=1}^kn_i=n\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>A média pode ser calculada como <span class="math display">\[\bar{x}=\frac{1}{n}\sum_{i=1}^kn_jx_j^*=\sum_{i=1}^kf_jx_j^*,\]</span> onde <span class="math inline">\(f_j=\dfrac{n_j}{n}\)</span> é a frequência relativa do <span class="math inline">\(j\)</span>-ésimo valor.</p></li>
+<li><p>Por outro lado, se as observações são dadas na forma da seguinte distribuição de frequências intervalar:</p>
+<table class="table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 14%">
+<col style="width: 22%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(X\)</span></th>
+<th style="text-align: center;"><span class="math inline">\([a_0,a_1]\)</span></th>
+<th style="text-align: center;"><span class="math inline">\((a_1,a_2]\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\ldots\)</span></th>
+<th style="text-align: center;"><span class="math inline">\((a_{k-1},a_k]\)</span></th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Frequência</td>
+<td style="text-align: center;"><span class="math inline">\(n_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\ldots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(n_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\sum_{i=1}^kn_i=n\)</span></td>
+</tr>
+</tbody>
+</table></li>
+</ul>
+<div class="callout-important callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Problema
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Os valores observados são desconhecidos.</p>
+<p>Para <span class="math inline">\(i=1,\ldots,k\)</span>, deve-se <strong>aproximar</strong> os valores do intervalo <span class="math inline">\((a_{i-1},a_i]\)</span> pelo ponto médio <span class="math inline">\(x_i^m=\dfrac{a_{i-i}+a_i}{2}\)</span> desse intervalo. Agora, a média é aproximada por <span class="math display">\[\bar{x}\approx\frac{1}{n}\sum_{i=1}^kn_jx_j^m=\sum_{i=1}^kf_jx_j^m,\]</span> onde <span class="math inline">\(f_j=\dfrac{n_j}{n}\)</span> é a frequência relativa do <span class="math inline">\(j\)</span>-ésimo intervalo.</p>
+</div>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Características da média:
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>É influenciada por valores atípicos;</p></li>
+<li><p>Não recomendada em dados assimétricos;</p></li>
+<li><p>Só é calculada em variáveis quantitativas;</p></li>
+<li><p>No caso intervalar, quanto menor for o número de intervalos, menos precisa será a aproximação para a média.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="def-media" class="theorem definition">
+<p><span class="theorem-title"><strong>Definição 2.21 (Mediana) </strong></span>Dadas as observações <span class="math inline">\(x_1,\ldots,x_n\)</span>, sejam <span class="math inline">\(x_{(1)},\ldots,x_{(n)}\)</span> esses valores ordenados, isto é, <span class="math inline">\(x_{(1)}\leq\cdots\leq x_{(n)}\)</span>. A mediana é definida por <span class="math display">\[Med=\begin{cases}
+x_{(\frac{n+1}{2})},&amp; \text{se $n$ \'e ímpar};\\
+\frac{x_{(\frac{n}{2})}+x_{(\frac{n}{2}+1)}}{2},&amp; \text{se $n$ \'e par}.\\
+\end{cases}
+\]</span></p>
+<p>Em outras palavras, a mediana de um conjunto de dados é o valor que divide os dados em dois grupos, um grupo que é a metade maior e o outro grupo que é a metade menor da amostra.</p>
+<center>
+<div id="fig-mediana" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="images/mediana.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<p></p><figcaption class="figure-caption">Figura&nbsp;2.14: Cálculo da mediana.</figcaption><p></p>
+</figure>
+</div>
+</center>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Características da mediana
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Sem interpretação física;</p></li>
+<li><p>Depende apenas da posição e não do valor;</p></li>
+<li><p>Tem menos influência de dados atípicos;</p></li>
+<li><p>Pode ser usada em variáveis qualitativas ordinais.</p></li>
+</ul>
+</div>
+</div>
+<ul>
+<li>No caso intervalar, o valor da mediana deve ser aproximado. Para contornar o problema suponha a distribuição de frequências relativas abaixo:</li>
+</ul>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(X\)</span></th>
+<th style="text-align: center;">Frequência</th>
+<th style="text-align: center;">Frequência Acumulada</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\([a_0,a_1]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_1=f_1\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\((a_1,a_2]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_2=F_1+f_2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(\vdots\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\((a_{k-1},a_k]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(f_k\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F_k=F_{k-1}+f_k=1\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Total</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\sum_{i=1}^kf_i=1\)</span></td>
+<td style="text-align: center;">—</td>
+</tr>
+</tbody>
+</table>
+<p>Denominamos <span class="math inline">\(F_1=f_1\)</span> e <span class="math inline">\(F_i=F_{i-1}+f_i\)</span>, <span class="math inline">\(i=2,\ldots,k\)</span>, de frequências acumuladas. Seja <span class="math inline">\(I_l\)</span> o primeiro intervalo tal que <span class="math inline">\(F_l\geq0.5\)</span>. Isto é, <span class="math inline">\(l\)</span> é o menor valor em <span class="math inline">\(\{1,\ldots,k\}\)</span> tal que <span class="math inline">\(F_l\geq0.5\)</span>. Deve-se aproximar a mediana por <span class="math display">\[Med\approx a_{l-1}+\frac{0.5-F_{l-1}}{d_l}.\]</span></p>
+</div>
+<div id="def-media" class="theorem definition">
+<p><span class="theorem-title"><strong>Definição 2.22 (Moda) </strong></span>Dadas as observações <span class="math inline">\(x_1,\ldots,x_n\)</span>, se <span class="math inline">\(x_1^*,\ldots,x_k^*\)</span> denotarem os <span class="math inline">\(k\)</span> valores diferentes, a moda é dada pelo valor com maior frequência.</p>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Características da moda
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Um conjunto de dados pode ser amodal, unimodal, bimodal, etc;</p></li>
+<li><p>A moda representa o(s) valor(es) mais provável(eis);</p></li>
+<li><p>É muito indicada em dados multimodais;</p></li>
+<li><p>Não é afetada por dados atípicos;</p></li>
+<li><p>Pode ser usada em variáveis qualitativas.</p></li>
+<li><p>Em variáveis contínuas, frequentemente, observam-se poucos valores repetidos. Assim, na maioria dos casos, esse tipo de dado é considerado amodal.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="medidas-de-dispersão" class="level4" data-number="2.4.4.2">
+<h4 data-number="2.4.4.2" class="anchored" data-anchor-id="medidas-de-dispersão"><span class="header-section-number">2.4.4.2</span> Medidas de dispersão</h4>
+<p>São medidas para representar quão disperso os dados estão. As medidas de dispersão mais usadas são: Amplitude amostral, variância, desvio-padrão, coeficiente de variação.</p>
+<div id="def-amplitude" class="theorem definition">
+<p><span class="theorem-title"><strong>Definição 2.23 (Amplitude) </strong></span>Dadas as observações <span class="math inline">\(x_1,\ldots,x_n\)</span> e <span class="math inline">\(x_{(1)},\ldots,x_{(n)}\)</span> as observações ordenadas, tal que <span class="math inline">\(x_{(1)}\le\ldots\le x_{(n)}\)</span>. A amplitude da amostra é definida por <span class="math display">\[Amp=x_{(n)}-x_{(1)}.\]</span></p>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Características da amplitude
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Cálculo rápido;</p></li>
+<li><p>Fácil interpretação;</p></li>
+<li><p>Alto impacto de dados atípicos.</p></li>
+</ul>
+</div>
+</div>
+<div id="def-variância" class="theorem definition">
+<p><span class="theorem-title"><strong>Definição 2.24 (Variância) </strong></span>Dadas as observações <span class="math inline">\(x_1,\ldots,x_n\)</span>, a variância é é definida por <span class="math display">\[s^2=\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2=\frac{1}{n-1}\sum_{i=1}^nx_i^2-\frac{n}{n-1}\bar{x}^2,\]</span> onde <span class="math inline">\(\bar{x}=\frac1n\sum_{i=1}^nx_i\)</span> é a média aritmética das observações.</p>
+<ul>
+<li>Para dados apresentados em frequências intervalares, temos que <span class="math display">\[s^2=\frac{1}{n-1}\sum_{i=1}^kn_i(x_i^m)^2-\frac{n}{n-1}\bar{x}^2,\]</span> onde <span class="math inline">\(x_i^m\)</span> é o ponto médio do <span class="math inline">\(i\)</span>-ésimo intervalo.</li>
+</ul>
+</div>
+<div id="def-desvio_padrao" class="theorem definition">
+<p><span class="theorem-title"><strong>Definição 2.25 (Desvio padrão) </strong></span>O desvio padrão populacional é dado por <span class="math display">\[s=\sqrt{s^2}=\sqrt{\frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})^2}.\]</span></p>
+</div>
+<div id="def-cv" class="theorem definition">
+<p><span class="theorem-title"><strong>Definição 2.26 (Coeficiente de variação) </strong></span>O coeficiente de variação populacional é dado por <span class="math display">\[cv=\frac{s}{\bar{x}},\]</span> onde <span class="math inline">\(\bar{x}\)</span> é a média amostral.</p>
+</div>
+<div class="callout-tip callout callout-style-default callout-captioned">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-caption-container flex-fill">
+Observação
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>O coeficiente de variação é uma medida que pode ser útil para comparar a variabilidade entre duas populações com médias muito diferentes.</p>
+</div>
+</div>
+<div id="exm-exemplo8" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 2.8 </strong></span>Retomando os valores do <a href="#exm-exemplo2">Exemplo&nbsp;<span>2.2</span></a>, considere a distribuição de frequências da variável <strong>N</strong> é dada por:</p>
+<center>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><strong>N</strong></th>
+<th style="text-align: center;"><strong>0</strong></th>
+<th style="text-align: center;"><strong>1</strong></th>
+<th style="text-align: center;"><strong>2</strong></th>
+<th style="text-align: center;"><strong>3</strong></th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Frequência</td>
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(11\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(12\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(30\)</span></td>
+</tr>
+</tbody>
+</table>
+</center>
+<p>Assim, <span class="math display">\[\bar{x}=\frac{2\cdot0+11\cdot1+12\cdot2+5\cdot3}{30}\approx 1.67,\]</span> <span class="math display">\[Med=\frac{x_{(15)}+x_{(16)}}{2}=\frac{2+2}{2}=2,\]</span> e <span class="math display">\[Mod=2.\]</span></p>
+<p><span class="math display">\[Amp=x_{(30)}-x_{(1)}=3-0=3,\]</span> <span class="math display">\[s^2\approx\frac{11\cdot1^2+12\cdot2^2+5\cdot3^2}{29}-\frac{30\cdot1.67^2}{29}=\frac{104}{29}-\frac{83.667}{29}\approx0.701,\]</span> <span class="math display">\[s\approx\sqrt{0.701}\approx0.837\]</span> e <span class="math display">\[cv=\frac{s}{\bar{x}}=\frac{0.837}{1.67}\approx 0.501 = 50.1\%.\]</span></p>
+</div>
+<div id="exm-exemplo9" class="theorem example">
+<p><span class="theorem-title"><strong>Exemplo 2.9 </strong></span>Retomando os valores do <a href="#exm-exemplo4">Exemplo&nbsp;<span>2.4</span></a>, considere a distribuição de frequências dada por:</p>
+<table class="table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 19%">
+<col style="width: 24%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(X\)</span></th>
+<th style="text-align: center;">Frequência</th>
+<th style="text-align: center;">Freq. relativa</th>
+<th style="text-align: center;">Freq. Acumulada</th>
+<th style="text-align: center;">Densidade</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\([1.5,2.5]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.100\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.100\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.100\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\((2.5,3.0]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.125\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.225\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.250\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\((3.0,3.5]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(15\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.375\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.600\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.750\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\((3.5,4.0]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(9\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.225\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.825\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.450\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\((4.0,4.5]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.150\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.975\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.300\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\((4.5,5.0]\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.025\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.000\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.050\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>Total</strong></td>
+<td style="text-align: center;"><span class="math inline">\(40\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.000\)</span></td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+Assim, temos que
+<div class="math">
+<p><span class="math display">\[\begin{align*}
+    \bar{x}&amp;\approx2\cdot0.1+2.75\cdot0.125+\cdots+4.75\cdot0.025\approx3.363\\
+    Med&amp;=a_{l-1}+\frac{0.5-F_{l-1}}{d_l}=3+\frac{0.5-0.225}{0.750}\approx3.367\\
+    \mathrm{Classe\ Modal}&amp;=(3.0,3.5]\Rightarrow Mod\approx\frac{3+3.5}{2}=3.25\\
+    Amp&amp;=x_{(40)}-x_{(1)}=4.7-1.7=3\\
+    s^2&amp;\approx\frac{4\cdot2^2+5\cdot2.75^2+\cdots+1\cdot4.75^2}{39}-\frac{40\cdot3.363^2}{39}\\
+    &amp;=\frac{469.75}{39}-\frac{452.391}{39}\approx0.445\\
+    s&amp;\approx\sqrt{0.445}\approx0.667\\
+    cv&amp;=\frac{s}{\bar{x}}=\frac{0.667}{3.363}\approx 0.198 = 19.8\%.
+  \end{align*}\]</span></p>
+</div>
+</div>
 
 
 <div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
@@ -1069,6 +1672,7 @@ Observe que…
 Sturges, Herbert A. 1926. <span>“The Choice of a Class Interval.”</span> <em>Journal of the American Statistical Association</em> 21 (153): 65–66. <a href="https://doi.org/10.1080/01621459.1926.10502161">https://doi.org/10.1080/01621459.1926.10502161</a>.
 </div>
 </div>
+</section>
 </section>
 </section>
 
